@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://jqegt2dvlg73"]
+
+[ext_resource type="Script" path="res://Voip.cs" id="1_6e6vp"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_osdyp"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_uusnb"]
+
+[node name="VOIP" type="Node" node_paths=PackedStringArray("input", "output")]
+script = ExtResource("1_6e6vp")
+input = NodePath("input")
+output = NodePath("output")
+
+[node name="input" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_osdyp")
+autoplay = true
+bus = &"Microphone"
+
+[node name="output" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_uusnb")
+autoplay = true
